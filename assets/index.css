@@ -1,0 +1,408 @@
+@font-face {
+  font-family: "MartinaScriptC";
+  src: url(fonts/Martina/Martina-scriptC.ttf);
+}
+
+@font-face {
+  font-family: "BodegaScript";
+  src: url(fonts/Bodega/BodegaScript_0.ttf);
+}
+
+/* ─── Reset ─────────────────────────────────────────────── */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* ─── Font size ──────────────────────────────────────────
+   Оригинал рассчитан на контейнер 480px и font-size 48px.
+   На мобильных: font-size = 10vw (= 48px при 480px viewport).
+   На десктопе: фиксируем 48px.
+─────────────────────────────────────────────────────────── */
+html {
+  font-size: 10vw;
+}
+
+@media (min-width: 480px) {
+  html {
+    font-size: 48px;
+  }
+}
+
+/* ─── Body ───────────────────────────────────────────────── */
+body {
+  background: -webkit-linear-gradient(
+    top,
+    #1a0808 0%,
+    #1a0808 14%,
+    #572c21 23%,
+    #ede8e2 40%,
+    #f0ece8 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    #1a0808 0%,
+    #1a0808 14%,
+    #572c21 23%,
+    #ede8e2 40%,
+    #f0ece8 100%
+  );
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  overflow-x: hidden;
+}
+
+/* ─── Container ──────────────────────────────────────────── */
+.container {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+/* ─── Фоновое изображение ────────────────────────────────── */
+.container__bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* ─── Контент поверх изображения ────────────────────────────
+   Все margin/padding в % от ширины контейнера.
+   Формула: px / 480 * 100%
+   Это гарантирует пропорциональное масштабирование
+   вместе с изображением при любой ширине экрана.
+─────────────────────────────────────────────────────────── */
+.container__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  /* 20px / 480px = 4.1667% */
+  padding: 4.1667%;
+}
+
+/* ─── AK буквы (верхние) ─────────────────────────────────── */
+.ak-img {
+  width: 50%;
+  -webkit-transform: translateX(10%);
+  -ms-transform: translateX(10%);
+  transform: translateX(10%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+#text1,
+#text2 {
+  fill: #e8e0c8;
+  stroke: #e8e0c8;
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.a1 {
+  -webkit-filter: drop-shadow(0 0 2px rgba(232, 224, 200, 0.6))
+    drop-shadow(0 0 8px rgba(232, 224, 200, 0.35))
+    drop-shadow(0 0 20px rgba(232, 224, 200, 0.15));
+  filter: drop-shadow(0 0 2px rgba(232, 224, 200, 0.6))
+    drop-shadow(0 0 8px rgba(232, 224, 200, 0.35))
+    drop-shadow(0 0 20px rgba(232, 224, 200, 0.15));
+}
+
+.k1 {
+  -webkit-filter: drop-shadow(0 0 2px rgba(232, 224, 200, 0.6))
+    drop-shadow(0 0 8px rgba(232, 224, 200, 0.35))
+    drop-shadow(0 0 20px rgba(232, 224, 200, 0.15));
+  filter: drop-shadow(0 0 2px rgba(232, 224, 200, 0.6))
+    drop-shadow(0 0 8px rgba(232, 224, 200, 0.35))
+    drop-shadow(0 0 20px rgba(232, 224, 200, 0.15));
+  /* -20px / 480px = -4.1667vw, 35px / 480px = 7.2917vw */
+  -webkit-transform: translate(-4.1667vw, 7.2917vw);
+  -ms-transform: translate(-4.1667vw, 7.2917vw);
+  transform: translate(-4.1667vw, 7.2917vw);
+}
+
+/* На десктопе vw больше не равен 1/480 ширины — фиксируем px */
+@media (min-width: 480px) {
+  .k1 {
+    -webkit-transform: translate(-20px, 35px);
+    -ms-transform: translate(-20px, 35px);
+    transform: translate(-20px, 35px);
+  }
+}
+
+/* ─── AK буквы (нижние) ──────────────────────────────────── */
+.ak-img-2 {
+  /* 135px / 480px = 28.125% */
+  margin-top: 32%;
+  width: 50%;
+  -webkit-transform: translateX(10%);
+  -ms-transform: translateX(10%);
+  transform: translateX(10%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+#text3,
+#text4 {
+  fill: #440807;
+  stroke: #440807;
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#text4 {
+  fill: #223e30;
+  stroke: #223e30;
+}
+
+.k2 {
+  /* -30px / 480px = -6.25vw, 49px / 480px = 10.2083vw */
+  -webkit-transform: translate(-6.25vw, 10.2083vw);
+  -ms-transform: translate(-6.25vw, 10.2083vw);
+  transform: translate(-6.25vw, 10.2083vw);
+}
+
+@media (min-width: 480px) {
+  .k2 {
+    -webkit-transform: translate(-30px, 49px);
+    -ms-transform: translate(-30px, 49px);
+    transform: translate(-30px, 49px);
+  }
+}
+
+/* ─── Текстовые блоки ────────────────────────────────────── */
+
+/* 67px / 480px = 13.9583% */
+.text-1 {
+  margin-top: 13.9583%;
+  font-family: MartinaScriptC, cursive;
+  color: #cfbb8f;
+  font-size: 1rem;
+}
+
+/* 750px / 480px = 156.25% */
+.text-ladder {
+  margin-top: 171%;
+  width: 100%;
+  font-family: MartinaScriptC, cursive;
+  font-size: 0.6rem;
+  text-align: left;
+  line-height: 0.5rem;
+}
+
+/* 0.3rem = 14.4px / 480px = 3% */
+.text-ladder p {
+  margin-left: calc(var(--i) * 3%);
+  color: #440807;
+}
+
+/* 10px / 480px = 2.0833% */
+.text-date {
+  margin-top: 2.0833%;
+  font-family: MartinaScriptC, cursive;
+  color: #440807;
+  width: 100%;
+  font-size: 1.05rem;
+  text-align: left;
+}
+
+.text-2 {
+  font-family: BodegaScript, cursive;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  width: 100%;
+}
+
+.text-2 span {
+  color: #440807;
+}
+
+/* 20px / 480px = 4.1667%, 230px / 480px = 47.9167% */
+.text-address {
+  margin-top: 4.1667%;
+  margin-right: 47.9167%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: "Cascadia Code", monospace;
+  font-size: 0.2rem;
+  font-weight: 200;
+}
+
+/* 215px / 480px = 44.7917% */
+.text-3 {
+  margin-top: 49.5%;
+  font-family: "Cascadia Code", monospace;
+  font-weight: 200;
+  font-size: 0.28rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+/* 95px / 480px = 19.7917% */
+.text-times {
+  margin-top: 23.4%;
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+  width: 100%;
+  padding: 0 3%;
+}
+
+.text-time-left {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.text-time-left span:first-child {
+  font-family: MartinaScriptC, cursive;
+  color: #440807;
+}
+
+.text-time-left span:last-child {
+  font-family: BodegaScript, cursive;
+}
+
+.text-time-right {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.text-time-right span:first-child {
+  margin-right: 2%;
+  font-family: MartinaScriptC, cursive;
+  color: #223e30;
+}
+
+.text-time-right span:last-child {
+  font-family: BodegaScript, cursive;
+}
+
+/* 65px / 480px = 13.5417% */
+.text-dress-code {
+  margin-top: 14%;
+  font-family: MartinaScriptC, cursive;
+  font-size: 1.75rem;
+}
+
+.text-dress-code span {
+  color: #440807;
+}
+
+/* 15px / 480px = 3.125% */
+.text-dress-code-desc {
+  margin-top: 3.125%;
+  margin-left: 3.125%;
+  font-family: MartinaScriptC, cursive;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 0.58rem;
+  line-height: 0.75rem;
+}
+
+/* 60px / 480px = 12.5% */
+.text-4 {
+  margin-top: 14%;
+  font-family: MartinaScriptC, cursive;
+  font-size: 1rem;
+  color: #440807;
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+/* 30px / 480px = 6.25% */
+.footer-img {
+  margin-top: 3%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 6.25%;
+}
+
+/* gap fallback для старых браузеров */
+.footer-img > * + * {
+  margin-top: 6.25%;
+}
+
+/* ─── Retina ──────────────────────────────────────────────── */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .container__bg {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
